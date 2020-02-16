@@ -17,10 +17,14 @@ const UserProfile = () => {
   useEffect(fetchUserProfiles, []);
 
   return userProfiles.map((userProfile, index) => {
+    const username = userProfile.username;
+    const userProfileId = userProfile.userProfileId;
     return (
       <div key={index}>
-        <h1>{userProfile.username}</h1>
-        <p>{userProfile.userProfileId}</p>
+        {userProfileId ?
+          <img src={`http://localhost:8080/api/v1/user-profile/${userProfileId}/image/download`} alt={'profile'}/> : null}
+        <h1>{username}</h1>
+        <p>{userProfileId}</p>
         <Dropzone {...userProfile} />
       </div>
     );
