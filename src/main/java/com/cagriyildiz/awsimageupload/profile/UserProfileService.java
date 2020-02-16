@@ -42,7 +42,7 @@ public class UserProfileService {
 
         // 5. Store the image in s3 and update DB (userProfileImageLink) with s3 image link
         String path = String.format("%s/%s-%s", BucketName.PROFILE_IMAGE.getBucketName(), user.getUsername(), user.getUserProfileId());
-        String fileName = String.format("%s-%s", file.getName(), UUID.randomUUID());
+        String fileName = String.format("%s-%s", file.getOriginalFilename(), UUID.randomUUID());
         try {
             fileStore.save(path, fileName, file.getInputStream(), Optional.of(metadata));
         } catch (IOException e) {
