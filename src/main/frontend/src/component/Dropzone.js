@@ -17,9 +17,9 @@ const Dropzone = ({ userProfileId }) => {
         }
       }
     ).then(() => {
-      console.log('success')
+      console.log('Image uploaded successfully')
     }).catch(err => {
-      console.log('error', err)
+      console.log('Error occurred while uploading the image', err)
     })
   }, [userProfileId]);
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
